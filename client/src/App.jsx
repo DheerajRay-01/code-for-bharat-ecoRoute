@@ -5,20 +5,46 @@ import Direction from "./components/pages/Direction";
 import LandingPage from "./components/pages/LandingPage";
 import LoginPage from "./components/pages/LoginPage";
 import { Navigate } from "react-router";
-import PublicRoutes from "./components/Routes.jsx/PublicRoutes";
-import ProtectedRoute from "./components/Routes.jsx/ProtectedRoute";
-import { useSelector } from "react-redux";
+import PublicRoutes from "./components/Routes/PublicRoutes";
+import ProtectedRoute from "./components/Routes/ProtectedRoute";
+import { useDispatch, useSelector } from "react-redux";
 import History from "./components/pages/History";
 import Co2_history from "./components/pages/Co2_history";
+import { useEffect } from "react";
+import axiosInstance from './components/utils/axios.js'
+import { addUser } from "./redux/userSlice";
+import { useState } from "react";
 
 
 function App() {
 
-  const user = useSelector(state => state.user.user)
-  console.log(user);
-  
-  const isAuthenticated = user ? true : false;
-  // const isAuthenticated = false;
+ const dispatch = useDispatch()
+
+  const userData = useSelector(state => state.user.user) // ✅ top level
+  const [user, setUser] = useState(userData)
+  const isAuthenticated = user ? true : false
+
+  const getUser = async () => {
+    try {
+      const res = await axiosInstance.get('/user/get-user')
+      const currentUser = res.data.data
+      console.log(currentUser)
+      dispatch(addUser(currentUser)) // ✅ save in redux
+      setUser(currentUser)           // ✅ save in local state
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  useEffect(() => {
+    if (!userData) {
+      getUser()
+    } else {
+      setUser(userData)
+    }
+  }, [userData]) // ✅ react to redux changes
+
+
 
   return (
  <Routes>

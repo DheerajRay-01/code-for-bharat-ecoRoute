@@ -10,10 +10,10 @@ function Login() {
 
 const navigate = useNavigate()
   const handleSignIn = () => {
-    // window.location.href = "http://localhost:3000/auth/google";
+    window.location.href = "http://localhost:3000/auth/google";
     console.log("Go to SignIn");
-    alert("Go to SignIn");
-    navigate('/')
+    // alert("Go to SignIn");
+    // navigate('/')
     
   };
 

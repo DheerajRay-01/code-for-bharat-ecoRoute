@@ -49,9 +49,9 @@ function Home() {
   };
 
   return (
-    <div className="min-h-screen  dark:bg-neutral-900 transition-colors duration-300">
+    <div className="min-h-screen px-3  dark:bg-neutral-900 transition-colors duration-300">
       {/* Form */}
-      <div className="hero min-h-[80vh]">
+      <div className="hero min-h-[80vh] ">
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}

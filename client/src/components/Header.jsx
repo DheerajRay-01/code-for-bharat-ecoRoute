@@ -4,8 +4,8 @@ import logo from '../assets/logo.png'
 
 function Header({user}) {
 
-  const {fullName , email } = user
-  const avatar = `https://avatar.iran.liara.run/username?username=${fullName.replace(" ","+")}`
+  const {fullName , email  } = user
+  const avatar =  `https://avatar.iran.liara.run/username?username=${fullName.replace(" ","+")}`
   console.log(avatar);
   
 

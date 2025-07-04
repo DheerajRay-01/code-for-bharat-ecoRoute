@@ -14,7 +14,7 @@ function Header({user}) {
    ${
      isActive
        ? 'text-primary font-semibold after:content-[""] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-primary'
-       : 'text-gray-100 hover:text-primary hover:after:content-[""] hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:h-0.5 hover:after:w-full hover:after:bg-primary'
+       : 'text-gray-700 dark:text-gray-100 hover:text-primary hover:after:content-[""] hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:h-0.5 hover:after:w-full hover:after:bg-primary'
    }`;
 
   return (
@@ -96,8 +96,10 @@ function Header({user}) {
           </ul>
         </div>
 
+
         {/* End */}
-        <div className="navbar-end">
+        <div className="navbar-end gap-4">
+        {/* <Theme/> */}
           {
             user ? (
             <div className="avatar">

@@ -183,9 +183,7 @@ function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="footer p-6 bg-gray-100 text-center text-gray-600">
-        <p>© 2025 EcoRoute. All rights reserved.</p>
-      </footer>
+      
     </div>
   );
 }

@@ -8,7 +8,7 @@ function LandingPage() {
   const navigate = useNavigate();
 
   const handleGetStarted = () => {
-    navigate("/home"); // Redirect to your form page
+    navigate("/login"); // Redirect to your form page
   };
 
   return (

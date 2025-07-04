@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { fetchWEather, geo } from './UtilsFunction.js';
+import { fetchWEather, geo } from './utils/UtilsFunction.js';
 
 function Steps({ step, coordinates,totalTime,totalDistance }) {
   const [enrichedSteps, setEnrichedSteps] = useState([]);

@@ -27,6 +27,13 @@ function App() {
         <Route element={<PublicRoutes isAuthenticated={isAuthenticated} />}>
           <Route path="/landing" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
+          
+
+          //TODO: change in production
+          {/* <Route index element={<HomePage />} /> 
+          <Route path="/direction" element={<Direction />} /> */}
+
+
         </Route>
 
         {/* ✅ Protected Routes */}

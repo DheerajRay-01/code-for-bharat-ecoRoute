@@ -23,7 +23,8 @@ function CheckPointsForm({ generateCheckPoints,setCheckpointTime  ,checkpointTim
   };
 
   return (
-    <div className="p-4 bg-amber-50 rounded-lg shadow-md max-w-md mx-auto mt-10 ">
+   <div className="form z-50 p-4 bg-amber-50 rounded-lg shadow-md max-w-md mx-auto mt-10">
+
       <h2 className="text-2xl text-gray-700 font-bold text-center mb-4">
         Want to Add a Checkpoint?
       </h2>

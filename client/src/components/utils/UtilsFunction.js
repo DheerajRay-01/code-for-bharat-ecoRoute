@@ -80,7 +80,7 @@ const getEmissionEstimate = async (distanceMeter) => {
   // console.log(distance);
   
   // const apiKey = import.meta.env.VITE_CARBON_API_KEY; // 🔐 Your API key
-  const apiKey = "lwWTQqIOWhiXhbAmaU2X5w"; // 🔐 Your API key
+  const apiKey = import.meta.env.VITE_CLIMATIQ_API_KEY; // 🔐 Your API key
 
   try {
     const response = await axios.post(
@@ -89,7 +89,7 @@ const getEmissionEstimate = async (distanceMeter) => {
         type: "vehicle",
         distance_unit: "km", // or "km" if your distance is in kilometers
         distance_value: distanceKm, // your distance value
-        vehicle_model_id: "7268a9b7-17e8-4c8d-acca-57059252afe9" // specific vehicle ID
+        vehicle_model_id: "7268a9b7-17e8-4c8d-acca-57059252afe9"
       },
       {
         headers: {

@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import { data, useLocation } from "react-router";
 import axios from "axios";
 import Map from "../map";
 import Steps from "../Steps.jsx";
-import { getEmissionEstimate, getIntervalCheckpoints } from "../UtilsFunction.js";
+import { getEmissionEstimate, getIntervalCheckpoints } from "../utils/UtilsFunction.js";
 import { RxCross2 } from "react-icons/rx";
 import CheckPointsForm from "../CheckPointsForm.jsx";
 import CheckPoints from "../CheckPoints.jsx";
+import { MdSaveAlt } from "react-icons/md";
+import { distance, time } from "framer-motion";
+// import { data } from "react-router";
 
 function Direction() {
   const location = useLocation();
@@ -15,7 +18,7 @@ function Direction() {
   const [latlngs, setLatlngs] = useState([]);
   const [steps, setSteps] = useState([]);
   const [coordinates, setCoordinates] = useState([]);
-  const [checkpointTime, setCheckpointTime] = useState(0);
+  const [checkpointTime, setCheckpointTime] = useState(data?.checkpointTime ||0);
   const [isCheckpointShow, setIsCheckpointShow] = useState(false);
   const [generatedCheckpoints, setGeneratedCheckpoints] = useState([]);
   const [loadingCheckpoint, setLoadingCheckpoint] = useState(false);
@@ -64,6 +67,8 @@ function Direction() {
         setCoordinates(coordinates);
         setLatlngs(converted);
         setSteps(steps);
+        getCarbonData(distance)
+        // saveTrip()
         // setTotalDistanceMeter(distance)
         // console.log("distance,time",totalDistance,totalTime);
         // console.log(carbonRes);
@@ -71,9 +76,6 @@ function Direction() {
         console.log(coordinates);
         console.log(time_distance);
         console.log(totalDistanceMeter);
-        getCarbonData(distance)
-
-      
       })
       .catch((error) => {
         console.error("Error fetching route:", error);
@@ -138,6 +140,24 @@ function Direction() {
 
   // console.log("checkpoint" ,a);
 
+const saveTrip = async ()=>{
+  console.log(data);
+  
+    const saveData = {
+     start:data.start,
+     end:data.end,
+     startCoords,
+     endCoords,
+      time_distance,
+      carbonData,
+      checkpointTime,
+    };
+  console.log(saveData);
+  alert("saved");
+  
+  }
+  
+
 
 
 
@@ -156,16 +176,17 @@ function Direction() {
           <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 p-4 rounded-xl bg-base-100 ">
   {/* 🚗 Trip Summary Details */}
   <div className="flex flex-col lg:items-end gap-3 ">
-    <div className="flex flex-col justify-center items-center text-sm text-gray-700">
+    <div className="flex flex-col justify-center  items-center text-sm text-gray-700">
       <p className="truncate max-w-xs font-semibold text-red-700">{data.start.slice(0, 35)}{data.start.length > 30 && "..."}</p>
       <p className="text-gray-500">to</p>
       <p className="truncate max-w-xs font-semibold text-red-700">{data.end.slice(0, 35)}{data.end.length > 30 && "..."}</p>
     </div>
     <button
-      className="btn btn-success btn-md lg:btn-lg rounded-full"
-      onClick={() => setIsCheckpointShow((prev) => !prev)}
+      className="btn btn-success btn-md lg:btn-lg rounded-full ju"
+      onClick={saveTrip}
+      // onClick={() => setIsCheckpointShow((prev) => !prev)}
     >
-      ➕ Add Checkpoints
+      <MdSaveAlt size={20}/> Save Route
     </button>
   </div>
   <div className="space-y-2 text-sm">
@@ -205,10 +226,7 @@ function Direction() {
 
       {/* 🗺 Map Panel */}
       <div className="w-full lg:w-1/2 flex flex-col gap-6">
-        {/* Map */}
-        <div className="bg-base-100  rounded-2xl p-3 justify-center flex">
-          <Map latlngs={latlngs} />
-        </div>
+       
 
         {/* Checkpoints */}
         <div className="bg-base-100 shadow-lg rounded-2xl p-3">
@@ -227,6 +245,10 @@ function Direction() {
           ) : (
             <CheckPoints checkpoints={generatedCheckpoints} />
           )}
+        </div>
+         {/* Map */}
+        <div className="bg-base-100  rounded-2xl p-3 justify-center flex">
+          <Map latlngs={latlngs} />
         </div>
       </div>
     </div>

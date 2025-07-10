@@ -1,9 +1,8 @@
-<p align="center">
-  <img src="./assets/ecoroute-logo.png" alt="EcoRoute Logo" width="180"/>
-</p>
-
 <h1 align="center">🌿 EcoRoute</h1>
 <p align="center"><em>Smart & Sustainable Route Planner</em></p>
+<p align="center">
+  <img src="client/src/assets/logo_sq.png" alt="EcoRoute Logo" width="200"/>
+</p>
 
 <p align="center">
   <a href="#"><img src="https://img.shields.io/badge/license-MIT-green.svg" /></a>

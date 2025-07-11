@@ -35,9 +35,9 @@ function Steps({ step, coordinates,totalTime,totalDistance }) {
   }, [step, coordinates]);
 
   return (
-  <div className="p-4 rounded-xl shadow-md border border-gray-200 h-[700px] overflow-y-auto ">
+  <div className="p-4 rounded-xl h-[700px] overflow-y-auto ">
     <h2 className="text-xl font-semibold mb-4 ">Step-by-Step Directions</h2>
-    <ol className="relative border-l border-blue-400 space-y-6 pl-4">
+    <ol className="relative  space-y-6 pl-4">
       {enrichedSteps.length > 0 ? (
         enrichedSteps.map((st, i) => (
    <li key={i} className="relative pl-6 text-start space-y-1">

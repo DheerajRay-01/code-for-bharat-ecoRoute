@@ -1,0 +1,81 @@
+export const trips = [
+  {
+    _id: "64a1f9e8b4a2c90a3f2c1b11",
+    start: "Indore, Madhya Pradesh, India",
+    end: "Bhopal, Madhya Pradesh, India",
+    startLat: "22.7195687",
+    startLon: "75.8577258",
+    endLat: "23.2599333",
+    endLon: "77.412615",
+    distance: "190.5 km",
+    time: "3 hr 45 min",
+    carbonData: 35.2,
+    checkpointTime: "12",
+    user: "648e2f1b3b4a3c90a1f2b2c1",
+    createdAt: "2025-07-10T09:12:23.000Z",
+    updatedAt: "2025-07-10T09:12:23.000Z"
+  },
+  {
+    _id: "64a1fa07b4a2c90a3f2c1b12",
+    start: "Nagpur, Maharashtra, India",
+    end: "Pune, Maharashtra, India",
+    startLat: "21.1458004",
+    startLon: "79.0881546",
+    endLat: "18.5204303",
+    endLon: "73.8567437",
+    distance: "715.2 km",
+    time: "11 hr 20 min",
+    carbonData: 112.5,
+    user: "648e2f1b3b4a3c90a1f2b2c2",
+    createdAt: "2025-07-09T14:40:10.000Z",
+    updatedAt: "2025-07-09T14:40:10.000Z"
+  },
+  {
+    _id: "64a1fa26b4a2c90a3f2c1b13",
+    start: "Udaipur, Rajasthan, India",
+    end: "Jaipur, Rajasthan, India",
+    startLat: "24.585445",
+    startLon: "73.712479",
+    endLat: "26.9124336",
+    endLon: "75.7872709",
+    distance: "393.4 km",
+    time: "6 hr 50 min",
+    carbonData: 65.7,
+    checkpointTime: "8",
+    user: "648e2f1b3b4a3c90a1f2b2c3",
+    createdAt: "2025-07-08T08:25:44.000Z",
+    updatedAt: "2025-07-08T08:25:44.000Z"
+  },
+  {
+    _id: "64a1fa44b4a2c90a3f2c1b14",
+    start: "Delhi, India",
+    end: "Agra, Uttar Pradesh, India",
+    startLat: "28.6139391",
+    startLon: "77.2090212",
+    endLat: "27.1766701",
+    endLon: "78.0080745",
+    distance: "233.1 km",
+    time: "4 hr 15 min",
+    carbonData: 42.3,
+    checkpointTime: null, // No checkpoint
+    user: "648e2f1b3b4a3c90a1f2b2c4",
+    createdAt: "2025-07-07T11:58:19.000Z",
+    updatedAt: "2025-07-07T11:58:19.000Z"
+  },
+  {
+    _id: "64a1fa63b4a2c90a3f2c1b15",
+    start: "Chennai, Tamil Nadu, India",
+    end: "Bangalore, Karnataka, India",
+    startLat: "13.0826802",
+    startLon: "80.2707184",
+    endLat: "12.9715987",
+    endLon: "77.5945627",
+    distance: "345.0 km",
+    time: "5 hr 30 min",
+    carbonData: 59.9,
+    checkpointTime: "", // Empty checkpoint
+    user: "648e2f1b3b4a3c90a1f2b2c5",
+    createdAt: "2025-07-06T16:44:00.000Z",
+    updatedAt: "2025-07-06T16:44:00.000Z"
+  }
+];

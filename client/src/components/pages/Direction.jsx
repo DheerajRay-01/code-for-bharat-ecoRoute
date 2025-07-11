@@ -9,11 +9,16 @@ import CheckPointsForm from "../CheckPointsForm.jsx";
 import CheckPoints from "../CheckPoints.jsx";
 import { MdSaveAlt } from "react-icons/md";
 import { distance, time } from "framer-motion";
+import axiosInstance from '../utils/axios.js'
 // import { data } from "react-router";
 
 function Direction() {
   const location = useLocation();
   const { data } = location.state || {};
+  console.log(data);
+  
+
+
   const { startCoords, endCoords } = data || {};
   const [latlngs, setLatlngs] = useState([]);
   const [steps, setSteps] = useState([]);
@@ -23,6 +28,7 @@ function Direction() {
   const [generatedCheckpoints, setGeneratedCheckpoints] = useState([]);
   const [loadingCheckpoint, setLoadingCheckpoint] = useState(false);
   const [totalDistanceMeter, setTotalDistanceMeter] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [time_distance, setTime_distance] = useState({
     time: "",
     distance: "",
@@ -37,6 +43,7 @@ function Direction() {
     const URL = "https://api.geoapify.com/v1/routing";
     const fullUrl = `${URL}?waypoints=${startCoords.lat},${startCoords.lon}|${endCoords.lat},${endCoords.lon}&type=short&&mode=${MODE}&apiKey=${API_KEY}`;
 
+    setLoading(true)
     axios
       .get(fullUrl)
       .then((response) => {
@@ -68,6 +75,7 @@ function Direction() {
         setLatlngs(converted);
         setSteps(steps);
         getCarbonData(distance)
+        setLoading(false)
         // saveTrip()
         // setTotalDistanceMeter(distance)
         // console.log("distance,time",totalDistance,totalTime);
@@ -140,40 +148,70 @@ function Direction() {
 
   // console.log("checkpoint" ,a);
 
-const saveTrip = async ()=>{
+const [isSaving, setIsSaving] = useState(false);
+
+const saveTrip = async () => {
   console.log(data);
-  
-    const saveData = {
-     start:data.start,
-     end:data.end,
-     startCoords,
-     endCoords,
-      time_distance,
-      carbonData,
-      checkpointTime,
-    };
-  console.log(saveData);
-  alert("saved");
-  
+
+  const saveData = {
+    start: data.start,
+    end: data.end,
+    startLat: startCoords.lat,
+    startLon: startCoords.lon,
+    endLat: endCoords.lat,
+    endLon: endCoords.lon,
+    distance: time_distance.distance,
+    time: time_distance.time,
+    carbonData,
+    checkpointTime,
+  };
+
+  try {
+    setIsSaving(true);
+    const res = await axiosInstance.post("/trip/save-trip", saveData);
+    console.log("Saved trip:", res.data.data.data);
+
+    toast.success("Trip saved successfully! ✅");
+  } catch (error) {
+    console.error("Error saving trip:", error);
+    toast.error("Failed to save trip ❌");
+  } finally {
+    setIsSaving(false);
   }
-  
+};
 
 
 
 
-  return (
+
+  return loading?(
+    <div className="flex justify-center items-center mt-20">
+  <div className="relative">
+    {/* Square blur background */}
+    <div className="absolute inset-0 w-32 h-32 bg-gray-200 dark:bg-gray-700 rounded-lg backdrop-blur-md opacity-50"></div>
+
+    {/* Spinner */}
+    <div className="flex justify-center items-center w-32 h-32">
+      <span className="loading loading-spinner text-primary">
+        Loading
+      </span>
+    </div>
+  </div>
+</div>
+
+  ): (
     <>
-  <div className="min-h-screen px-4 lg:px-12 py-6 bg-base-100">
-    <div className="flex flex-col lg:flex-row gap-8 justify-center">
+  <div className="min-h-screen  px-4 lg:px-12 py-6 bg-gray-100 dark:bg-gray-900">
+    <div className="flex flex-col lg:flex-row gap-8 justify-center ">
       {/* 📋 Steps Panel */}
       <div className="w-full lg:w-1/2 space-y-6">
         {/* 🚗 Summary */}
-        <div className="bg-base-100 shadow-lg rounded-2xl p-3">
+        <div className="bg-base-100 shadow-lg rounded-2xl p-3 dark:bg-gray-800 ">
           <h2 className="text-2xl font-bold text-green-700 flex items-center gap-2 mb-4">
             🚗 Summary
           </h2>
 
-          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 p-4 rounded-xl bg-base-100 ">
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 p-4 rounded-xl  ">
   {/* 🚗 Trip Summary Details */}
   <div className="flex flex-col lg:items-end gap-3 ">
     <div className="flex flex-col justify-center  items-center text-sm text-gray-700">
@@ -181,13 +219,21 @@ const saveTrip = async ()=>{
       <p className="text-gray-500">to</p>
       <p className="truncate max-w-xs font-semibold text-red-700">{data.end.slice(0, 35)}{data.end.length > 30 && "..."}</p>
     </div>
-    <button
-      className="btn btn-success btn-md lg:btn-lg rounded-full ju"
-      onClick={saveTrip}
-      // onClick={() => setIsCheckpointShow((prev) => !prev)}
-    >
-      <MdSaveAlt size={20}/> Save Route
-    </button>
+ <button
+  className="btn btn-success btn-md lg:btn-lg rounded-full flex items-center gap-2 px-4"
+  onClick={saveTrip}
+  disabled={isSaving}
+>
+  {isSaving ? (
+    <span className="loading loading-spinner text-white"></span>
+  ) : (
+    <>
+      <MdSaveAlt size={20} />
+      Save Route
+    </>
+  )}
+</button>
+
   </div>
   <div className="space-y-2 text-sm">
     <div>
@@ -205,10 +251,12 @@ const saveTrip = async ()=>{
   
 </div>
 
+
         </div>
+          <div className="divider"></div>
 
         {/* 🧭 Directions */}
-        <div className="bg-base-100 shadow-lg rounded-2xl p-3">
+        <div className="dark:bg-gray-800 bg-white shadow-lg rounded-2xl p-3">
           <h2 className="text-2xl font-bold text-blue-700 mb-4 flex items-center gap-2">
             🧭 Turn-by-Turn Directions
           </h2>
@@ -229,7 +277,7 @@ const saveTrip = async ()=>{
        
 
         {/* Checkpoints */}
-        <div className="bg-base-100 shadow-lg rounded-2xl p-3">
+        <div className="dark:bg-gray-800 bg-white shadow-lg rounded-2xl p-3">
           <h2 className="text-2xl font-bold text-purple-700 mb-4 text-center">
             🚩 Selected Checkpoints
           </h2>
@@ -247,7 +295,7 @@ const saveTrip = async ()=>{
           )}
         </div>
          {/* Map */}
-        <div className="bg-base-100  rounded-2xl p-3 justify-center flex">
+        <div className="dark:bg-gray-800 bg-white  rounded-2xl p-3 justify-center flex">
           <Map latlngs={latlngs} />
         </div>
       </div>

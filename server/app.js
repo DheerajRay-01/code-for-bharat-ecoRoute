@@ -5,6 +5,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser'; 
 import authRoute from './routes/auth.route.js'
 import userRoute from './routes/user.route.js'
+import tripRoute from './routes/trip.route.js'
 
 import passport from 'passport';
 import './config/passport.js'
@@ -31,6 +32,7 @@ app.use(urlencoded({ extended: true }));
 
 app.use('/auth',authRoute)
 app.use('/api/user',userRoute)
+app.use('/api/trip',tripRoute)
 // app.use('/api/links',linkRoutes)
 
 

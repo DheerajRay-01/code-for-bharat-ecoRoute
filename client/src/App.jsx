@@ -1,40 +1,22 @@
-import { Routes, Route } from "react-router";
-import Layout from "./components/Layout";
-import HomePage from "./components/pages/HomePage";
-import Direction from "./components/pages/Direction";
-import LandingPage from "./components/pages/LandingPage";
-import LoginPage from "./components/pages/LoginPage";
-import { Navigate } from "react-router";
-import PublicRoutes from "./components/Routes/PublicRoutes";
-import ProtectedRoute from "./components/Routes/ProtectedRoute";
-import { useDispatch, useSelector } from "react-redux";
-import History from "./components/pages/History";
-import { useEffect } from "react";
-import axiosInstance from './components/utils/axios.js'
-import { addUser } from "./redux/userSlice";
-import { useState } from "react";
-import Logout from "./components/Logout.jsx";
-import CO2_Analytic from "./components/pages/CO2_Analytic.jsx";
-
-
-
 function App() {
-
- const dispatch = useDispatch()
-
-  const userData = useSelector(state => state.user.user) // ✅ top level
+  const dispatch = useDispatch()
+  const userData = useSelector(state => state.user.user)
   const [user, setUser] = useState(userData)
-  const isAuthenticated = user ? true : false
+  const [loading, setLoading] = useState(true) // 👈 loading flag
+
+  const isAuthenticated = !!user
 
   const getUser = async () => {
     try {
       const res = await axiosInstance.get('/user/get-user')
       const currentUser = res.data.data
       console.log(currentUser)
-      dispatch(addUser(currentUser)) // ✅ save in redux
-      setUser(currentUser)           // ✅ save in local state
+      dispatch(addUser(currentUser))
+      setUser(currentUser)
     } catch (err) {
       console.error(err)
+    } finally {
+      setLoading(false) // 👈 done loading
     }
   }
 
@@ -43,32 +25,32 @@ function App() {
       getUser()
     } else {
       setUser(userData)
+      setLoading(false) // 👈 already in redux
     }
-  }, [userData]) // ✅ react to redux changes
+  }, [userData])
 
-
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <h1 className="text-2xl font-bold text-gray-500 animate-pulse">Checking session...</h1>
+      </div>
+    )
+  }
 
   return (
- <Routes>
+    <Routes>
       <Route path="/" element={<Layout />}>
         {/* ✅ Public Routes */}
         <Route element={<PublicRoutes isAuthenticated={isAuthenticated} />}>
           <Route path="/landing" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
-          
-
-          //TODO: change in production
-          {/* <Route index element={<HomePage />} /> 
-          <Route path="/direction" element={<Direction />} /> */}
-
-
         </Route>
 
         {/* ✅ Protected Routes */}
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
           <Route index element={<HomePage />} /> 
           <Route path="/direction" element={<Direction />} />
-          <Route path="/history" element={<History/>} />
+          <Route path="/history" element={<History />} />
           <Route path="/analysis" element={<CO2_Analytic />} />
           <Route path="/logout" element={<Logout />} />
         </Route>
@@ -77,8 +59,5 @@ function App() {
       {/* 🌟 Catch all unknown routes */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
-
-  );
+  )
 }
-
-export default App;

@@ -23,11 +23,17 @@ const googleAuth = asyncHandler(async (req, res) => {
   // Save tokens to DB (optional)
   await User.findByIdAndUpdate(_id, {refreshToken});
 
+  // const cookieOptions = {
+  //   httpOnly: true,
+  //   secure: false, 
+  //   sameSite: "Lax",
+  // };
   const cookieOptions = {
-    httpOnly: true,
-    secure: false, 
-    sameSite: "Lax",
-  };
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production", // true in production
+  sameSite: "None", // allow cross-site cookies for frontend-backend on different domains
+};
+
 
   return res
     .cookie("accessToken", accessToken, {

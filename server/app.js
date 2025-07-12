@@ -35,6 +35,15 @@ app.use('/api/user',userRoute)
 app.use('/api/trip',tripRoute)
 // app.use('/api/links',linkRoutes)
 
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "✅ Snap-Link backend is running!",
+
+  });
+});
+
+
 
 //Global Error Handler 
 app.use((err, req, res, next) => {

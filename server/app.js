@@ -36,11 +36,7 @@ app.use('/api/trip',tripRoute)
 // app.use('/api/links',linkRoutes)
 
 app.get("/", (req, res) => {
-  res.status(200).json({
-    success: true,
-    message: "✅ Snap-Link backend is running!",
-
-  });
+  res.send("EcoRoute backend is running ✅");
 });
 
 

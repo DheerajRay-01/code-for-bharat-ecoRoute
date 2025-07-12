@@ -1,3 +1,23 @@
+import { Routes, Route } from "react-router";
+import Layout from "./components/Layout";
+import HomePage from "./components/pages/HomePage";
+import Direction from "./components/pages/Direction";
+import LandingPage from "./components/pages/LandingPage";
+import LoginPage from "./components/pages/LoginPage";
+import { Navigate } from "react-router";
+import PublicRoutes from "./components/Routes/PublicRoutes";
+import ProtectedRoute from "./components/Routes/ProtectedRoute";
+import { useDispatch, useSelector } from "react-redux";
+import History from "./components/pages/History";
+import { useEffect } from "react";
+import axiosInstance from './components/utils/axios.js'
+import { addUser } from "./redux/userSlice";
+import { useState } from "react";
+import Logout from "./components/Logout.jsx";
+import CO2_Analytic from "./components/pages/CO2_Analytic.jsx";
+
+
+
 function App() {
   const dispatch = useDispatch()
   const userData = useSelector(state => state.user.user)
@@ -61,3 +81,5 @@ function App() {
     </Routes>
   )
 }
+
+export default App;

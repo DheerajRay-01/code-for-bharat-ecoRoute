@@ -5,7 +5,7 @@ import { Link } from 'react-router'
 function Footer() {
   return (
     <div>
-        <footer className="footer bg-green-100 dark:bg-base-200 text-black footer-horizontal footer-center  dark:text-primary-content p-10">
+        <footer className="footer bg-gray-800 footer-horizontal footer-center  text-white p-5">
   <aside className='flex gap-10'>
     <Link to='/landing'>
    <img src={logo} alt="logo" className='w-28 cursor-pointer' />

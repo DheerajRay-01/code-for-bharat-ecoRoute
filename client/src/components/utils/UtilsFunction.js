@@ -100,6 +100,8 @@ const getEmissionEstimate = async (distanceMeter) => {
     );
 
     const carbon_kg = response.data.data.attributes.carbon_kg;
+    console.log(response.data.data);
+    
     // const carbon_mt = response.data.data.attributes.carbon_mt;
     // const res = {
     //   carbon_kg,carbon_mt

@@ -41,7 +41,7 @@ function Header({user}) {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 bg-opacity-80 rounded-box w-52 backdrop-blur"
+              className="menu menu-sm dropdown-content mt-1 p-1 shadow bg-base-100 bg-opacity-80 rounded-box w-52 backdrop-blur"
             >
               <li>
                 <NavLink to="/" className={navLinkStyle}>
@@ -55,8 +55,8 @@ function Header({user}) {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/co2-history" className={navLinkStyle}>
-                  CO₂ History
+                <NavLink to="/analysis" className={navLinkStyle}>
+                  CO₂ Analysis
                 </NavLink>
               </li>
             </ul>
@@ -89,8 +89,8 @@ function Header({user}) {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/co2-history" className={navLinkStyle}>
-                CO₂ History
+              <NavLink to="/analysis" className={navLinkStyle}>
+                CO2 Analysis
               </NavLink>
             </li>
           </ul>

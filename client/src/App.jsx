@@ -9,11 +9,11 @@ import PublicRoutes from "./components/Routes/PublicRoutes";
 import ProtectedRoute from "./components/Routes/ProtectedRoute";
 import { useDispatch, useSelector } from "react-redux";
 import History from "./components/pages/History";
-import Co2_history from "./components/pages/Co2_history";
 import { useEffect } from "react";
 import axiosInstance from './components/utils/axios.js'
 import { addUser } from "./redux/userSlice";
 import { useState } from "react";
+import Analysis from "./components/pages/analysis.jsx";
 
 
 function App() {
@@ -67,7 +67,7 @@ function App() {
           <Route index element={<HomePage />} /> 
           <Route path="/direction" element={<Direction />} />
           <Route path="/history" element={<History/>} />
-          <Route path="/co2-history" element={<Co2_history />} />
+          <Route path="/analysis" element={<Analysis />} />
         </Route>
       </Route>
 

@@ -39,18 +39,17 @@ const googleAuth = asyncHandler(async (req, res) => {
 
 
   return res
-    .cookie("accessToken", accessToken, {
-      ...cookieOptions,
-      // maxAge: 15 * 60 * 1000, // 15 min
-       maxAge: 30 * 24 * 60 * 60 * 1000, // 1 day
-      
-    })
-    .cookie("refreshToken", refreshToken, {
-      ...cookieOptions,
-      maxAge: 30 * 24 * 60 * 60 * 1000, // 7 days
-    })
-    .status(200)
-    .redirect(process.env.CORS_ORIGIN);
+  .cookie("accessToken", accessToken, {
+    ...cookieOptions,
+    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+  })
+  .cookie("refreshToken", refreshToken, {
+    ...cookieOptions,
+    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+  })
+  .status(200)
+  .json({ message: "Login successful" ,token:accessToken});
+
 });
 
 

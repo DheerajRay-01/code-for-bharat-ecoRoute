@@ -10,29 +10,26 @@ import axiosInstance from './utils/axios.js';
 function Login() {
 
 const navigate = useNavigate()
-  // const handleSignIn = () => {
-  //   window.location.href = "https://code-for-bharat-ecoroute.onrender.com/auth/google";
-  //   console.log("Go to SignIn");
-  //   // alert("Go to SignIn");
-  //   // navigate('/')
-    
-  // };
-
-
-const handleSignIn = async () => {
-  try {
-    const response = await axiosInstance.get(
-      "https://code-for-bharat-ecoroute.onrender.com/auth/google/callback",
-      { withCredentials: true } // Important for cookies
-    );
-
-    console.log(response.data.message); // Login successful
-    // window.location.href = response.data.redirectUrl;
-    navigate("/")
-  } catch (error) {
-    console.error("Google OAuth failed", error);
-  }
+const handleSignIn = () => {
+  window.location.href = "https://code-for-bharat-ecoroute.onrender.com/auth/google";
 };
+
+
+
+// const handleSignIn = async () => {
+//   try {
+//     const response = await axiosInstance.get(
+//       "https://code-for-bharat-ecoroute.onrender.com/auth/google/callback",
+//       { withCredentials: true } // Important for cookies
+//     );
+
+//     console.log(response.data.message); // Login successful
+//     // window.location.href = response.data.redirectUrl;
+//     navigate("/")
+//   } catch (error) {
+//     console.error("Google OAuth failed", error);
+//   }
+// };
 
 
 

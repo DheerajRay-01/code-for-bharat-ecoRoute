@@ -78,20 +78,10 @@ const googleAuth = asyncHandler(async (req, res) => {
     sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
   };
 
-  res
-    .cookie("accessToken", accessToken, {
-      ...cookieOptions,
-      maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-    })
-    .cookie("refreshToken", refreshToken, {
-      ...cookieOptions,
-      maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-    })
-    .status(200)
-    .json({
-      message: "Login successful",
-      redirectUrl: process.env.CORS_ORIGIN, // Send frontend URL
-    });
+ return res
+  .cookie("accessToken", accessToken, { ...cookieOptions })
+  .cookie("refreshToken", refreshToken, { ...cookieOptions })
+  .redirect(process.env.CORS_ORIGIN + "/");
 });
 
 

@@ -27,7 +27,8 @@ const handleSignIn = async () => {
     );
 
     console.log(response.data.message); // Login successful
-    window.location.href = response.data.redirectUrl;
+    // window.location.href = response.data.redirectUrl;
+    navigate("/")
   } catch (error) {
     console.error("Google OAuth failed", error);
   }

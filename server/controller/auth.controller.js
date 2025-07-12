@@ -86,20 +86,45 @@ const googleAuth = asyncHandler(async (req, res) => {
 
 
 
+// const logOut = asyncHandler(async (req, res) => {
+//   const { _id } = req.user;
+
+//     if (!_id) {
+//     throw new ApiError(401,"User not Fetched")
+//   }
+//   await User.findByIdAndUpdate(_id, { refreshToken: null });
+
+//   return res
+//     .clearCookie("accessToken")
+//     .clearCookie("refreshToken")
+//     .status(200)
+//     .redirect(process.env.CORS_ORIGIN); 
+// });
+
+
 const logOut = asyncHandler(async (req, res) => {
   const { _id } = req.user;
 
-    if (!_id) {
-    throw new ApiError(401,"User not Fetched")
+  if (!_id) {
+    throw new ApiError(401, "User not Fetched");
   }
+
   await User.findByIdAndUpdate(_id, { refreshToken: null });
 
+  const cookieOptions = {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+    // domain: ".code-for-bharat-ecoroute.onrender.com", // ✅ required if domain cookies
+  };
+
   return res
-    .clearCookie("accessToken")
-    .clearCookie("refreshToken")
+    .clearCookie("accessToken", cookieOptions)
+    .clearCookie("refreshToken", cookieOptions)
     .status(200)
-    .redirect(process.env.CORS_ORIGIN); 
+    .json({ message: "Logged out successfully" });
 });
+
 
 
 const getCurrentUser = asyncHandler(async (req, res) => {

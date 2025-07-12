@@ -11,28 +11,25 @@ function Logout() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
 
-  const handleLogout = async () => {
-    setLoading(true);
-    try {
-     const res =  await axiosInstance.get("/user/logout");
-        
-     console.log(res.data);
-     
-      dispatch(deleteUser());
+const handleLogout = async () => {
+  setLoading(true);
+  try {
+    const res = await axiosInstance.get("/user/logout");
 
-      // toast.success("Logout successful");
+    console.log(res.data); // ✅ Should show "Logged out successfully"
+    dispatch(deleteUser());
+    // toast.success(res.data.message || "Logout successful");
+    navigate("/landing");
+  } catch (error) {
+    const message = error?.response?.data?.message || "Something went wrong";
+    console.error("Logout error:", message);
+    // toast.error(message);
+    setError(message);
+  } finally {
+    setLoading(false);
+  }
+};
 
-         navigate("/landing");
- 
-    } catch (error) {
-      const message = error?.response?.data?.message || "Something went wrong";
-      console.error("Logout error:", message);
-      setError(message);
-      // toast.error(message);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <div>

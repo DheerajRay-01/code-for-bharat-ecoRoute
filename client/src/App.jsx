@@ -66,14 +66,15 @@ function App() {
 
         {/* ✅ Protected Routes */}
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
-          <Route index element={<HomePage />} /> 
-          <Route path="/direction" element={<Direction />} />
+        
+         
           <Route path="/history" element={<History/>} />
           <Route path="/analysis" element={<CO2_Analytic />} />
           <Route path="/logout" element={<Logout />} />
         </Route>
       </Route>
-
+  <Route index element={<HomePage />} /> 
+   <Route path="/direction" element={<Direction />} />
       {/* 🌟 Catch all unknown routes */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

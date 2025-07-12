@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react(),tailwindcss()],
   server:{
     proxy:{
-      "/api":"http://localhost:3000"
+      "/api":import.meta.env.VITE_CLIMATIQ_API_KEY,
     }
   }
 })

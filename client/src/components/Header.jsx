@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink} from "react-router";
 import logo from '../assets/logo.png'
+import ProfileIcon from "./ProfileIcon";
 
 function Header({user}) {
 
@@ -99,7 +100,7 @@ function Header({user}) {
 
         {/* End */}
         <div className="navbar-end gap-4">
-        {/* <Theme/> */}
+        {/* <Theme/>
           {
             user ? (
             <div className="avatar">
@@ -111,7 +112,8 @@ function Header({user}) {
  <button className="btn btn-outline btn-primary">Login</button>
 )
           }
-         
+          */}
+          <ProfileIcon user={user}/>
         </div>
       </div>
     </div>

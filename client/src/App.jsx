@@ -13,7 +13,9 @@ import { useEffect } from "react";
 import axiosInstance from './components/utils/axios.js'
 import { addUser } from "./redux/userSlice";
 import { useState } from "react";
-import Analysis from "./components/pages/analysis.jsx";
+import Logout from "./components/Logout.jsx";
+import CO2_Analytic from "./components/pages/CO2_Analytic.jsx";
+
 
 
 function App() {
@@ -67,7 +69,8 @@ function App() {
           <Route index element={<HomePage />} /> 
           <Route path="/direction" element={<Direction />} />
           <Route path="/history" element={<History/>} />
-          <Route path="/analysis" element={<Analysis />} />
+          <Route path="/analysis" element={<CO2_Analytic />} />
+          <Route path="/logout" element={<Logout />} />
         </Route>
       </Route>
 

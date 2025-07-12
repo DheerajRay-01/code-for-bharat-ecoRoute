@@ -2,6 +2,7 @@ import React from 'react'
 import { FcGoogle } from "react-icons/fc";
 import map from '../assets/map.jpg'
 import { useNavigate } from 'react-router';
+import axiosInstance from './utils/axios.js';
 
 
 
@@ -9,13 +10,28 @@ import { useNavigate } from 'react-router';
 function Login() {
 
 const navigate = useNavigate()
-  const handleSignIn = () => {
-    window.location.href = "https://code-for-bharat-ecoroute.onrender.com/auth/google";
-    console.log("Go to SignIn");
-    // alert("Go to SignIn");
-    // navigate('/')
+  // const handleSignIn = () => {
+  //   window.location.href = "https://code-for-bharat-ecoroute.onrender.com/auth/google";
+  //   console.log("Go to SignIn");
+  //   // alert("Go to SignIn");
+  //   // navigate('/')
     
-  };
+  // };
+
+
+const handleSignIn = async () => {
+  try {
+    const response = await axiosInstance.get(
+      "https://code-for-bharat-ecoroute.onrender.com/auth/google/callback",
+      { withCredentials: true } // Important for cookies
+    );
+
+    console.log(response.data.message); // Login successful
+    window.location.href = response.data.redirectUrl;
+  } catch (error) {
+    console.error("Google OAuth failed", error);
+  }
+};
 
 
 

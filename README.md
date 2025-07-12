@@ -7,7 +7,6 @@
 <p align="center">
   <a href="#"><img src="https://img.shields.io/badge/license-MIT-green.svg" /></a>
   <a href="#"><img src="https://img.shields.io/badge/hackathon-Code%20for%20Bharat-red" /></a>
-  <a href="#"><img src="https://img.shields.io/badge/demo-available-blue" /></a>
   <a href="#"><img src="https://img.shields.io/badge/built%20with-Frontend%20%7C%20Node.js%20%7C%20Express-blue.svg" /></a>
   <a href="#"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg" /></a>
 </p>
@@ -113,6 +112,22 @@ For running the frontend, follow the guide here:
 
 For running the backend, follow the guide here:
 ➡️ [Backend Setup Guide](./server/README.md)
+
+## 📸 UI Previews
+
+#### 🔹 Landing Page
+![Landing](client/public/screenshots/5.png)
+
+#### 🔹 Smart Route Planner
+![Planner](client/public/screenshots/2.png)
+![Planner](client/public/screenshots/3.png)
+
+#### 🔹 CO₂ Emission Summary
+![Emissions](client/public/screenshots/6.png)
+
+#### 🔹 Travel History & Stats
+![History](client/public/screenshots/10.png)
+
 
 ## 👥 Hackathon Team
 | Name           | GitHub                                             |

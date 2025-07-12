@@ -15,6 +15,8 @@ const googleAuth = asyncHandler(async (req, res) => {
 
   const accessToken = generateAccessToken({ _id, fullName, email });
   const refreshToken = generateRefreshToken({ _id, email });
+  console.log("accessToken",accessToken);
+  
 
   if (!accessToken || !refreshToken) {
     throw new ApiError(400, "Tokens not generated");

@@ -30,8 +30,8 @@ const googleAuth = asyncHandler(async (req, res) => {
   // };
   const cookieOptions = {
   httpOnly: true,
-  secure: process.env.NODE_ENV === "production", // true in production
-  sameSite: "None", // allow cross-site cookies for frontend-backend on different domains
+  secure: false, // true in production
+  sameSite: "Lax", // allow cross-site cookies for frontend-backend on different domains
 };
 
 

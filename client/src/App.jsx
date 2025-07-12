@@ -66,20 +66,13 @@ useEffect(() => {
         <Route element={<PublicRoutes isAuthenticated={isAuthenticated} />}>
           <Route path="/landing" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
-          
-
-          //TODO: change in production
-          {/* <Route index element={<HomePage />} /> 
-          <Route path="/direction" element={<Direction />} /> */}
-
-
         </Route>
 
         {/* ✅ Protected Routes */}
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
           <Route index element={<HomePage />} /> 
           <Route path="/direction" element={<Direction />} />
-          <Route path="/history" element={<History/>} />
+          <Route path="/history" element={<History />} />
           <Route path="/analysis" element={<CO2_Analytic />} />
           <Route path="/logout" element={<Logout />} />
         </Route>

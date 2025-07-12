@@ -9,9 +9,9 @@ dotenv.config()
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  // server: {
-  //   proxy: {
-  //     '/api': process.env.VITE_CORS_ORIGIN, // Use process.env here
-  //   },
-  // },
+  server: {
+    proxy: {
+      '/api': process.env.VITE_CORS_ORIGIN, // Use process.env here
+    },
+  },
 })

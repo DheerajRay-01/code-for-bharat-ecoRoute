@@ -29,9 +29,9 @@ const googleAuth = asyncHandler(async (req, res) => {
   //   sameSite: "Lax",
   // };
   const cookieOptions = {
-  httpOnly: true,
-  secure: false, // true in production
-  sameSite: "Lax", // allow cross-site cookies for frontend-backend on different domains
+     httpOnly: true, 
+    secure: process.env.NODE_ENV == "production",
+    sameSite: process.env.NODE_ENV == "production" ? "None" : "Lax", 
 };
 
 

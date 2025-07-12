@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { data, useLocation } from "react-router";
 import axios from "axios";
-import Map from "../map";
+import Map from "../Map.jsx";
 import Steps from "../Steps.jsx";
 import { getEmissionEstimate, getIntervalCheckpoints } from "../utils/UtilsFunction.js";
 import { RxCross2 } from "react-icons/rx";
 import CheckPointsForm from "../CheckPointsForm.jsx";
 import CheckPoints from "../CheckPoints.jsx";
 import { MdSaveAlt } from "react-icons/md";
-import { distance, time } from "framer-motion";
 import axiosInstance from '../utils/axios.js'
-// import { data } from "react-router";
 
 function Direction() {
   const location = useLocation();

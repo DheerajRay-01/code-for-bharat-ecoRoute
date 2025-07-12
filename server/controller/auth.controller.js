@@ -33,8 +33,8 @@ const googleAuth = asyncHandler(async (req, res) => {
   const cookieOptions = {
      httpOnly: true, 
     secure: process.env.NODE_ENV == "production",
-    // sameSite: process.env.NODE_ENV == "production" ? "None" : "Lax", 
-    sameSite: "Lax", 
+    sameSite: process.env.NODE_ENV == "production" ? "None" : "Lax", 
+    // sameSite: "Lax", 
 };
 
 
@@ -48,7 +48,6 @@ const googleAuth = asyncHandler(async (req, res) => {
     maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
   })
   .status(200)
-  .json({ message: "Login successful" ,token:accessToken})
   .redirect(process.env.CORS_ORIGIN);
 
 });

@@ -1,0 +1,17 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://code-for-bharat-ecoroute.onrender.com/api/:path*"
+    },
+    {
+      "source": "/auth/:path*",
+      "destination": "https://code-for-bharat-ecoroute.onrender.com/auth/:path*"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/index.html"
+    }
+  ]
+}
+

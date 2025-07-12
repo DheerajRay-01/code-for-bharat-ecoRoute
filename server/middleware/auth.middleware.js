@@ -7,6 +7,8 @@ export const authMiddleWare = asyncHandler(async(req, res, next)=>{
     if(!token){
         throw new ApiError(401,"Unauthorize Request")
     }
+    console.log("token",token);
+    
     const decodeToken = jwt.verify(token,process.env.ACCESS_TOKEN_SECRET)
 
     if(!decodeToken){

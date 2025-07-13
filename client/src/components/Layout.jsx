@@ -12,7 +12,9 @@ const user = useSelector(state => state.user.user)
     <div>
   
       <Header />
-    <Outlet/>
+<div className="mt-16">
+  <Outlet />
+</div>
     <Footer/>
     </div>
   )

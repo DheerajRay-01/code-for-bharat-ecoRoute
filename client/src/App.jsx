@@ -25,7 +25,6 @@ function App() {
   const [user, setUser] = useState(userData)
   const [loading, setLoading] = useState(true) // 👈 loading flag
 
-  const isAuthenticated = !!user
 
  const getUser = async () => {
     try {

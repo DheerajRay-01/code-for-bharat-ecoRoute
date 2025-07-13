@@ -34,7 +34,7 @@ function ProfileIcon() {
           </div>
           <ul
             tabIndex={0}
-            className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 shadow-sm right-1"
+            className="dropdown-content z-50 menu bg-base-100 rounded-box w-52 shadow-sm right-1 transition-all duration-300 ease-in-out"
           >
             <li className="text-center">
               <p className="font-medium">{user.fullName}</p>

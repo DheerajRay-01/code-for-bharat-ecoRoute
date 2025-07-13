@@ -59,14 +59,14 @@
             className="hero-content mt-13 md:my-4 flex-col text-center max-w-lg w-full bg-white dark:dark:bg-gray-800  dark:text-gray-200 rounded-3xl shadow-xl p-4 px-8"
           >
             {/* Logo */}
-            <motion.img
+            {/* <motion.img
               src={logo}
               alt="EcoRoute Logo"
               className="mx-auto w-28 h-28 object-contain "
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-            />
+            /> */}
 
             <h1 className="text-3xl font-extrabold text-green-700 dark:text-green-400 mb-2">
               Plan Your Journey

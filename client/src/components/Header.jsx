@@ -15,7 +15,7 @@ function Header() {
 
   return (
     <div>
-      <div className="navbar bg-base-100 bg-opacity-50 backdrop-blur-lg shadow-sm px-3">
+      <div className="navbar z-50 bg-base-100 bg-opacity-50 backdrop-blur-lg shadow-sm px-3">
         {/* Start */}
         <div className="navbar-start">
           <div className="dropdown">
@@ -37,7 +37,7 @@ function Header() {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-1 p-1 shadow bg-base-100 bg-opacity-80 rounded-box w-52 backdrop-blur"
+              className="menu menu-sm dropdown-content z-50 mt-1 p-1 shadow bg-base-100 bg-opacity-80 rounded-box w-52 backdrop-blur"
             >
               <li>
                 <NavLink to="/" className={navLinkStyle}>

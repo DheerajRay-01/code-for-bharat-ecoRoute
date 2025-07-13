@@ -15,7 +15,7 @@ function Header() {
 
   return (
     <div>
-      <div className="navbar z-50 bg-base-100 bg-opacity-50 backdrop-blur-lg shadow-sm px-3">
+      <div className="navbar z-50 bg-base-100 bg-opacity-50 backdrop-blur-lg shadow-sm px-3 fixed top-0">
         {/* Start */}
         <div className="navbar-start">
           <div className="dropdown">

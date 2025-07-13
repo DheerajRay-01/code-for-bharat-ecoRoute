@@ -68,16 +68,16 @@
               transition={{ duration: 0.8, ease: "easeOut" }}
             /> */}
 
-            <h1 className="text-3xl font-extrabold text-green-700 dark:text-green-400 mb-2">
+            <h1 className="text-3xl font-extrabold text-green-700 dark:text-green-400 mb-1">
               Plan Your Journey
             </h1>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
+            <p className="text-gray-600 dark:text-gray-300 mb-3">
               Enter your start and end locations to generate the best route with
               live updates.
             </p>
 
             {/* Start Location */}
-            <div className="w-full mb-4 text-left">
+            <div className="w-full mb-3 text-left">
               <label className="font-semibold text-gray-700 dark:text-gray-200">
                 Start Location
               </label>
@@ -120,7 +120,7 @@
             </div>
 
             {/* End Location */}
-            <div className="w-full mb-4 text-left">
+            <div className="w-full mb-3 text-left">
               <label className="font-semibold text-gray-700 dark:text-gray-200">
                 End Location
               </label>

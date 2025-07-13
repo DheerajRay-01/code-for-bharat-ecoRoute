@@ -1,22 +1,17 @@
 import React from "react";
-import { NavLink} from "react-router";
-import logo from '../assets/logo.png'
+import { NavLink } from "react-router";
+import logo from '../assets/logo.png';
 import ProfileIcon from "./ProfileIcon";
 
-function Header({user}) {
-
-  const {fullName , email  } = user
-  const avatar =  `https://avatar.iran.liara.run/username?username=${fullName.replace(" ","+")}`
-  console.log(avatar);
-  
+function Header() {
 
   const navLinkStyle = ({ isActive }) =>
     `relative px-3 py-2 rounded-md transition-all duration-300
-   ${
-     isActive
-       ? 'text-primary font-semibold after:content-[""] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-primary'
-       : 'text-gray-700 dark:text-gray-100 hover:text-primary hover:after:content-[""] hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:h-0.5 hover:after:w-full hover:after:bg-primary'
-   }`;
+    ${
+      isActive
+        ? 'text-primary font-semibold after:content-[""] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-primary'
+        : 'text-gray-700 dark:text-gray-100 hover:text-primary hover:after:content-[""] hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:h-0.5 hover:after:w-full hover:bg-primary'
+    }`;
 
   return (
     <div>
@@ -49,7 +44,6 @@ function Header({user}) {
                   Home
                 </NavLink>
               </li>
-              {/* <li><NavLink to="/" className={navLinkStyle}>CO2 History</NavLink></li> */}
               <li>
                 <NavLink to="/history" className={navLinkStyle}>
                   My Routes
@@ -68,7 +62,7 @@ function Header({user}) {
           >
             <div className="avatar">
               <div className="w-12 rounded-full">
-                <img src={logo} />
+                <img src={logo} alt="EcoRoute Logo" />
               </div>
             </div>
             <span>EcoRoute</span>
@@ -83,7 +77,6 @@ function Header({user}) {
                 Home
               </NavLink>
             </li>
-            {/* <li><NavLink to="/" className={navLinkStyle}>Co2 History</NavLink></li> */}
             <li>
               <NavLink to="/history" className={navLinkStyle}>
                 My Routes
@@ -91,29 +84,15 @@ function Header({user}) {
             </li>
             <li>
               <NavLink to="/analysis" className={navLinkStyle}>
-                CO2 Analysis
+                CO₂ Analysis
               </NavLink>
             </li>
           </ul>
         </div>
 
-
         {/* End */}
         <div className="navbar-end gap-4">
-        {/* <Theme/>
-          {
-            user ? (
-            <div className="avatar">
-  <div className="ring-primary ring-offset-base-100 w-10 rounded-full ring-2 ring-offset-2">
-    <img src={avatar} />
-  </div>
-</div>
-):(
- <button className="btn btn-outline btn-primary">Login</button>
-)
-          }
-          */}
-          <ProfileIcon user={user}/>
+          <ProfileIcon/>
         </div>
       </div>
     </div>

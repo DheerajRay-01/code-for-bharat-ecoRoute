@@ -10,12 +10,9 @@ const user = useSelector(state => state.user.user)
 
   return (
     <div>
-    {
-     user && <Header user={user}/>
-
-    }
+  
+      <Header />
     <Outlet/>
-
     <Footer/>
     </div>
   )
